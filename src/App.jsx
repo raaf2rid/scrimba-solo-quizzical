@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './index.css'
 import Quiz from './Components/Quiz'
+import Spinner from './Components/Spinner'
 import Settings from './Components/Settings'
 
 
@@ -17,11 +18,13 @@ import Settings from './Components/Settings'
   const [showSettings, setShowSettings] = useState(false)
   const [settings, setSettings] = useState(
     {
-        category: "", 
+        id: "", 
         difficulty: "", 
         type: "", 
         amount: 5
     })
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
 
   
   
@@ -37,15 +40,44 @@ import Settings from './Components/Settings'
 
 function startGame(){
 
-  fetch("https://opentdb.com/api.php?amount=5")
-  .then(res=> res.json())
-  .then(data => setquizData(data.results.map(quiz=>({ question: quiz.question,
-     answers: shuffleArray([...quiz.incorrect_answers, quiz.correct_answer]),
-     correctAnswer : quiz.correct_answer
-  }))))
+  setIsLoading(true)
 
-  setGameOn(true)
+  const url = `https://opentdb.com/api.php?amount=${settings.amount}&category=${settings.id}&difficulty=${settings.difficulty}&type=${settings.type}`
+
+  fetch(url)
+  .then(res=> res.json())
+  .then(data =>{ 
+    if(data.response_code === 1){
+      setIsLoading(false)
+      setIsError(true)
+      setGameOn(false)
+      setSettings({
+        id: "", 
+        difficulty: "", 
+        type: "", 
+        amount: 5
+    })
+    }
+    else{
+      showQuiz(data)
+      setGameOn(true)
+    }})
+
+
+  console.log(quizData)
   
+}
+
+
+function showQuiz(data){
+
+  setquizData(data.results.map(quiz=>({ question: quiz.question,
+    answers: shuffleArray([...quiz.incorrect_answers, quiz.correct_answer]),
+    correctAnswer : quiz.correct_answer
+ })))
+
+ setIsLoading(false)
+
 }
 
 useEffect(()=>{
@@ -68,7 +100,6 @@ useEffect(()=>{
 
 function handleSettings(){
   setShowSettings(true)
-  console.log(showSettings)
 }
 
 
@@ -106,12 +137,40 @@ function checkAnswer(obj){
 }
 
 
+function handleChange(option, attr) {
+
+
+  const {name} = attr
+  const {value} = option
+
+  setSettings(prevSettings => {
+      return {
+          ...prevSettings,
+          [name] : value
+      }
+  })
+
+}
+function goHome(){
+  setShowSettings(false)
+  setIsError(false)
+  console.log(settings)
+}
+
+
 
   return (
     <>
     
-    {showSettings ? 
+    {isLoading ?
+
+    <Spinner /> :
+    
+    showSettings ? 
      <Settings 
+     settings={settings}
+     handleChange={handleChange}
+     goHome={goHome}
      /> :
     !gameOn ? 
     <div className='homepage'>
@@ -123,11 +182,11 @@ function checkAnswer(obj){
         <div>i</div>
         <span className='relative-class'>c</span>al
       </h3>
-
       <div className='homepage-buttons'>
         <button onClick={handleSettings}>Settings</button>
         <button onClick={startGame}>Start Game</button>
       </div>
+    {isError && <p className='error-message'>No quiz found! Please change the settings.</p>}
     </div> :
     <div>
       <Quiz 

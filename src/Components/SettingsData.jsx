@@ -25,15 +25,21 @@ const categories = [
   {value: 'Entertainment: Cartoon & Animations', label:'Entertainment: Cartoon & Animations' }
 ];
 
+let firstId = 9
+
+for(let i=0; i < categories.length; i++){
+  categories[i].value = firstId++
+}
+
 const difficulty = [
-  {value: "Easy", label: "Easy"},
-  {value: "Medium", label: "Medium"},
-  {value: "Hard", label: "Hard"},
+  {value: "easy", label: "Easy"},
+  {value: "medium", label: "Medium"},
+  {value: "hard", label: "Hard"},
 ]
 
 const type = [
-  {value: "Multiple Choice", label: "Multiple Choice"},
-  {value: "True/False", label: "True/False"}
+  {value: "multiple", label: "Multiple Choice"},
+  {value: "boolean", label: "True/False"}
 ]
 const number = [
   {value: "1", label: "1"},

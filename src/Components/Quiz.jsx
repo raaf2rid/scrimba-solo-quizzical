@@ -1,7 +1,7 @@
 import React from "react";
 import he from 'he'
 
-export default function Quiz({quizData, chosenAnswer, gameOver, checkAnswer, result, showResult, isDisabled}){
+export default function Quiz({quizData, chosenAnswer, gameOver, checkAnswer, result, showResult, isDisabled, isChecked}){
 
   
 
@@ -52,7 +52,7 @@ export default function Quiz({quizData, chosenAnswer, gameOver, checkAnswer, res
       </div>
       {gameOver &&
       <div className="check-answer">
-      <button className="check-btn" onClick={checkAnswer} disabled={isDisabled}>Check Answer</button>
+      <button className={isChecked ? "check-btn checked" : "check-btn"} isChecked={isChecked} onClick={checkAnswer}>{isChecked ? 'Restart' : 'Check Answer'}</button>
       {showResult && <div> Your Score: {result}/{quizData.length}</div>}
       </div>
       }

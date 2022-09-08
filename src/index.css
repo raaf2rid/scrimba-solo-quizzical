@@ -145,6 +145,11 @@ h3 div{
   cursor: pointer;
   transition: 0.3s;
   animation: checkBtn 1s infinite;
+  width: 150px;
+}
+
+.checked{
+  animation: none;
 }
 
 .btn{

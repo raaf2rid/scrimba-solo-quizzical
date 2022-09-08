@@ -25,6 +25,7 @@ import Settings from './Components/Settings'
     })
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
+  const [isChecked, setIsChecked] = useState(false)
 
   
   
@@ -118,6 +119,22 @@ function chosenAnswer(answer, obj){
 
   }
 
+function restart (){
+  if(isChecked){
+    setIsChecked(false)
+    setGameOver(false)
+    setGameOn(false)
+    setIsDisabled(false)
+    setShowResult(false)
+    setSettings({
+      id: "", 
+      difficulty: "", 
+      type: "", 
+      amount: 5
+  })
+  }
+}
+
 function checkAnswer(obj){
 
     const correctAnswers = obj.map(item=> item.correctAnswer)
@@ -133,6 +150,9 @@ function checkAnswer(obj){
 
     setIsDisabled(true)
 
+    setIsChecked(true)
+
+    restart ()
 
 }
 
@@ -197,6 +217,7 @@ function goHome(){
         result = {result}
         showResult= {showResult}
         isDisabled={isDisabled}
+        isChecked={isChecked}
         />
     </div>}
     </>

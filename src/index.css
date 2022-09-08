@@ -8,7 +8,6 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 *{
@@ -24,7 +23,7 @@ body{
   justify-content: center;
   /* width: 100vw; */
   margin: 0 auto;
-  /* height: 90vh; */
+  height: 100vh;
   gap: 20px;
   font-size: 3rem;
 }
@@ -186,19 +185,18 @@ h3 div{
 
 
 .select-menu{
-  /* height: 100vh; */
+  height: 100vh;
   /* width: 500px; */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   justify-content: center;
 }
 
 .options-div{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .option-class{

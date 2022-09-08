@@ -1,22 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap");
 
-
-
-body{
-  background-color: #FEFBF6;
+body {
+  background-color: #fefbf6;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-*{
+* {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-.homepage{
+.homepage {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,31 +26,31 @@ body{
   font-size: 3rem;
 }
 
-h3 span{
+h3 span {
   position: absolute;
   z-index: -1;
   /* transform: rotate(-90deg); */
 }
 
-h3 div{
+h3 div {
   position: absolute;
   display: inline;
   z-index: -1;
   transform: translateY(10px) rotate(180deg);
 }
 
-.relative-class{
+.relative-class {
   position: relative;
   opacity: 0.6;
   color: #18b3da;
 }
 
-.homepage-buttons{
+.homepage-buttons {
   display: flex;
   gap: 20px;
 }
 
-.homepage-buttons button{
+.homepage-buttons button {
   width: 120px;
   padding: 10px 0;
   border-radius: 5px;
@@ -64,46 +62,42 @@ h3 div{
   transition: 0.2s;
 }
 
-.homepage-buttons button:hover{
+.homepage-buttons button:hover {
   background-color: #fff;
   color: #18b3da;
   border: 1px solid #18b3da;
 }
 
-
-.homepage-buttons button:active{
+.homepage-buttons button:active {
   box-shadow: inset 5px 5px 10px 3px rgba(0, 0, 0, 0.5);
   border: 1px solid transparent;
-
 }
 
-.container{
+.container {
   width: 90%;
   max-width: 780px;
   margin: 20px auto;
   border-radius: 10px;
-
 }
 
-
-.question{
+.question {
   /* background-color: #F1F1F1; */
   padding: 10px 0;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #3D3C42;
+  color: #3d3c42;
 }
 
-.quizDiv{
+.quizDiv {
   padding: 15px 0;
   border-bottom: 2px solid;
 }
 
-.quizDiv:last-child{
+.quizDiv:last-child {
   border: none;
 }
 
-.answerDiv{
+.answerDiv {
   /* background-color: #E2DCC8; */
   padding: 10px 0;
   display: flex;
@@ -111,12 +105,12 @@ h3 div{
   transition: 1s;
 }
 
-.answer{
+.answer {
   cursor: pointer;
   margin-right: 20px;
   margin-top: 10px;
   width: max-content;
-  background-color: #3D3C42;
+  background-color: #3d3c42;
   color: #fff;
   padding: 8px 10px;
   border-radius: 5px;
@@ -124,8 +118,7 @@ h3 div{
   border: none;
 }
 
-
-.check-answer{
+.check-answer {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -134,7 +127,7 @@ h3 div{
   font-weight: 600;
 }
 
-.check-btn{
+.check-btn {
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
@@ -148,30 +141,29 @@ h3 div{
   width: 150px;
 }
 
-.checked{
+.checked {
   animation: none;
 }
 
-.btn{
+.btn {
   margin-top: 10px;
   width: 250px;
   align-self: center;
 }
 
-.check-btn:hover{
-  background-color: #FEFBF6;
+.check-btn:hover {
+  background-color: #fefbf6;
   color: #18b3da;
   border: 1px solid #18b3da;
   animation: none;
 }
 
-.check-btn:active{
+.check-btn:active {
   box-shadow: inset 5px 5px 10px 3px rgba(0, 0, 0, 0.5);
   animation: none;
-
 }
 
-.check-btn:disabled{
+.check-btn:disabled {
   background-color: #cccccc;
   color: #666666;
   transform: scale(1);
@@ -180,16 +172,15 @@ h3 div{
   animation: none;
 }
 
-.check-btn:disabled:hover{
+.check-btn:disabled:hover {
   transform: scale(1);
 }
 
-.answer:disabled{
+.answer:disabled {
   background-color: #939393;
 }
 
-
-.select-menu{
+.select-menu {
   height: 100vh;
   /* width: 500px; */
   margin: 0 auto;
@@ -198,49 +189,47 @@ h3 div{
   justify-content: center;
 }
 
-.options-div{
+.options-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 20px;
 }
 
-.option-class{
+.option-class {
   width: 100%;
   margin-top: 10px;
 }
 
-.error-message{
+.error-message {
   font-size: 1.5rem;
   text-align: center;
   color: #e71a1a;
   font-weight: 500;
 }
 
-
 @keyframes check {
-  from {  opacity: 0.2;
+  from {
+    opacity: 0.2;
   }
-  to {  opacity: 1;
+  to {
+    opacity: 1;
   }
 }
 
 @keyframes checkBtn {
-  0% {  
+  0% {
     background-color: #18b3da;
   }
-  25%{
-    background-color: #3D3C42;
+  25% {
+    background-color: #3d3c42;
   }
-  50%{
+  50% {
     background-color: #18b3da;
-
   }
-  75%{
-    background-color: #3D3C42;
-    
+  75% {
+    background-color: #3d3c42;
   }
-  
 }
 
 /* Spinner */
@@ -271,7 +260,6 @@ h3 div{
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
   body {
     font-size: 0.8rem;
   }
@@ -279,5 +267,4 @@ h3 div{
   button {
     font-size: 0.7rem;
   }
-
 }
